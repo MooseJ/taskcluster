@@ -225,6 +225,7 @@ let load = loader({
         pulseClient,
         reference,
         rootUrl: cfg.taskcluster.rootUrl,
+        iterateConf: cfg.app.provisionerIterateConfig || {},
       });
     },
   },
@@ -243,6 +244,7 @@ let load = loader({
         WorkerPool,
         providers,
         monitor: monitor.childMonitor('worker-scanner'),
+        iterateConf: cfg.app.workerScannerIterateConfig || {},
       });
       await workerScanner.initiate();
       return workerScanner;
